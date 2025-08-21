@@ -1,0 +1,29 @@
+name: Sync External Data.json
+
+on:
+  schedule:
+    # This workflow runs daily at 00:00 UTC.
+    # Adjust the cron schedule as needed (e.g., '0 * * * *' for hourly).
+    - cron: '0 */2 * * *'
+  workflow_dispatch: # Allows you to manually run the workflow from the Actions tab
+
+jobs:
+  sync_json:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Your Repository # Clones your repository to the runner
+        uses: actions/checkout@v4
+
+      - name: Download External Data.json # Fetches the raw JSON file from the other user's repository
+        run: |
+          curl -sS "https://raw.githubusercontent.com/forrany/Awesome-Ollama-Server/refs/heads/main/public/data.json" -o public/data.json
+        # The -o public/data.json argument saves the downloaded file directly to your desired location
+
+      - name: Commit and Push Changes # Commits and pushes the updated file
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add public/data.json
+          git diff --staged --quiet || git commit -m "Automated: Sync data.json"
+          git push
