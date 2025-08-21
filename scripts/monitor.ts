@@ -16,7 +16,7 @@ import {
 const TEST_PROMPT = "Tell me a short joke"
 const CONCURRENT_LIMIT = 50 // 并发数限制
 const RESULT_FILE = join(process.cwd(), 'public', 'data.json')
-const COUNTRYS = process.env.COUNTRYS ? process.env.COUNTRYS.split(',') : ['US', 'CN', 'RU']
+const COUNTRYS = process.env.COUNTRYS ? process.env.COUNTRYS.split(',') : ['US', 'CN', 'RU', 'IN', 'FR', 'ES']
 
 // Redis 客户端配置
 const redis = process.env.UPSTASH_REDIS_URL && process.env.UPSTASH_REDIS_TOKEN
