@@ -1,7 +1,6 @@
 # Ollama Service monitoring system
 
 
-
 This is a system for monitoring and detecting the availability and performance of Ollama services. It provides a modern web interface, supports multiple languages ​​(English), and has real-time detection and data display capabilities.
 
 ---
